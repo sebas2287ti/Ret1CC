@@ -1,4 +1,5 @@
 from ret1cc.algoritms.Boyer_Moore import find_word_BM
+from ret1cc.algoritms.Knuth_Morris_Pratt import find_word_KMP
 from dotenv import load_dotenv
 import time
 import os
@@ -9,13 +10,16 @@ def main_interface():
         print("Bienvenido a cual punto del reto quieres acceder" )
         print("1 | Busqueda de texto")
         print("2 | Es palindromo")
-        opcion=int(input("Ingresa la opcion deseada: "))
+        try:
+            opcion=int(input("Ingresa la opcion deseada: "))
+        except:
+            input("Digite unicamente numeros")
+            continue 
         match opcion:
             case 1:
                 reto1_interface() 
                 break 
             case 2:
-                pass
                 break
             case _:
                 print("Opcion no valida")
@@ -43,17 +47,27 @@ def reto1_algoritm_interace(word):
         print("Elige que algoritmo quieres usar")
         print("1 | Boyer_Moore")
         print("2 | Knuth_Morris_Pratt")
-        opcion = int(input("Ingresa la opcion deseada: "))
+        try:
+            opcion=int(input("Ingresa la opcion deseada: "))
+        except:
+            input("Digite unicamente numeros")
+            continue 
         match opcion:
             case 1:
                 start_time = time.perf_counter()
                 find_word_BM(os.getenv("TEXT"), word)
                 end_time = time.perf_counter()
-                break
+                input(f"El tiempo de ejecucion fue de {(end_time-start_time) * 1000} ms")
+                #break
             case 2:
-                print ("se acabo")
-                break
+                start_time = time.perf_counter()
+                res = find_word_KMP(os.getenv("TEXT"), word)
+                end_time = time.perf_counter()
+                for i in range(len(res)):
+                    print(res[i], end=" ")
+                input(f"El tiempo de ejecucion fue de {(end_time-start_time) * 1000} ms")
+                #break
             case _:
-                print("Opcion no valida")
+                input("Opcion no valida")
 
      
