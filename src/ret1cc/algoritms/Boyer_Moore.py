@@ -1,4 +1,4 @@
-NO_OF_CHARS = 256
+NO_OF_CHARS = 65536
 
 def find_word_BM(text, word):
     m = len(word)
