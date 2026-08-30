@@ -85,9 +85,7 @@ def reto2_interface():
             print(f"La palabra: {word} ya es un palindromo")
             break
 
-        if Palindromo.type_case_palindromo(word):
-            Palindromo.case_one_palindromo(word)
-        else:
-            Palindromo.case_two_palindromo(word)
+        print(Palindromo.convert_palindromo(word))
+        input(f"Presiona para salir")
 
 
