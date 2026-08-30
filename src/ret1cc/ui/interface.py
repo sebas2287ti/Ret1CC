@@ -1,5 +1,6 @@
 from ret1cc.algoritms.Boyer_Moore import find_word_BM
 from ret1cc.algoritms.Knuth_Morris_Pratt import find_word_KMP
+from ret1cc.algoritms import Palindromo
 from dotenv import load_dotenv
 import time
 import os
@@ -20,6 +21,7 @@ def main_interface():
                 reto1_interface() 
                 break 
             case 2:
+                reto2_interface()
                 break
             case _:
                 print("Opcion no valida")
@@ -71,3 +73,21 @@ def reto1_algoritm_interace(word):
                 input("Opcion no valida")
 
      
+def reto2_interface():
+    while True:
+        os.system("cls")
+        print("Ingresa la palabra que quieres volver palindromo")
+        word = input("Ingresa la palabra: ")
+        if len(word) <= 2:
+            continue
+
+        if Palindromo.is_palindromo(word):
+            print(f"La palabra: {word} ya es un palindromo")
+            break
+
+        if Palindromo.type_case_palindromo(word):
+            Palindromo.case_one_palindromo(word)
+        else:
+            Palindromo.case_two_palindromo(word)
+
+
